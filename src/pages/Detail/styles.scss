@@ -1,0 +1,89 @@
+.detail-container{
+    hr{
+        opacity: 0.1;
+    }
+    .detail-title{
+
+    }
+    .detail-des{
+
+    }
+    .up-dow-product{
+        // background: yellow;
+        display: flex;
+        width: 40%;
+        padding: 50px;
+        padding-left: 0;
+        span:first-child{
+            flex-grow: 1;
+            text-align: center;
+            border-radius: 50% 0 0 50% ;
+            border: 1px solid #dedede;
+            padding: 15px;
+            cursor: pointer;
+            font-size: larger;
+            font-weight: 700;
+            &:hover{
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+        }
+        span:nth-child(2){
+            background: #dedede;
+            flex-grow: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+
+
+        }
+        span:last-child{
+            flex-grow: 1;
+            text-align: center;
+            border-radius: 0 50% 50% 0;
+            border: 1px solid #dedede;
+            padding: 15px;
+            cursor: pointer;
+            font-size: larger;
+            font-weight: 700;
+            &:hover{
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+        }
+    }
+    .detail-add{
+        display: flex;
+        gap: 15px;
+        margin: 30px;
+        margin-left: 0;
+        .detail-btn{
+            background-color: orange;
+            color: white;
+            border: 1px solid #dedede;
+            border-radius: 20px;
+            font-size:larger ;
+            padding: 0 30px;
+            height: 50px;
+            &:hover{
+                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            }
+            
+        }
+        .icon{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            color: black;
+            &:hover{
+                background: orange;
+                color: white;
+                border-radius: 50%;
+
+            }
+        }
+    }
+}

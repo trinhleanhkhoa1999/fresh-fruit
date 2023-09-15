@@ -1,0 +1,98 @@
+.header-container {
+    background: #f7f7f7;
+    color: black;
+    .header-title{
+        height: 100%;
+        min-height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header-popover{
+        a{
+            text-decoration: none;
+        }
+    }
+    .header-cart{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:10px;
+    }
+    .cart-content-container{
+        display: flex;
+        margin-bottom: 5px;
+        gap: 5px;
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+        border: 1px solid #dedede;
+        padding: 5px;
+
+        &:hover{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            transform: scale(1.05);
+
+        }
+        .cart-img{
+            // background: red;
+            border: 1px solid #dedede;
+            flex-grow: 1;
+        }
+        .cart-content{
+            // background: blue;
+            flex-grow: 2;
+            .cart-content-product{
+                display: flex;
+                justify-content: space-between;
+                span:last-child{
+                    cursor: pointer;
+                    &:hover{
+                        color: red;
+                        font-size: larger;
+                    }
+                }
+            }
+        }
+    }
+    .icon{
+        display:flex ;
+        list-style-type: none;
+        li{
+            padding: 0 10px;
+        }
+    }
+}
+.header-container-2{
+    padding: 20px 150px ;
+    height: 150px;
+    .header-menu{
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        height: 100%;
+        font-weight: 700;
+        font-size: 18px;
+        li{
+            padding: 10px 30px;
+            transition: all .5s ease-in-out;
+            &:hover{
+                background: #ed970b;
+                border-radius: 5px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                transform: translate(10px);
+            }
+            a{
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+    .header-search{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+}
