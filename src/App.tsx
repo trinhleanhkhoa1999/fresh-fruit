@@ -13,6 +13,7 @@ import { LoginPage } from './pages/Login';
 import { RegisterPage } from './pages/Register';
 import Loading from './components/Loading';
 import DetailPage from './pages/Detail';
+import DashboardPage from './pages/Admin/Dashboard';
 
 const Layout = () => (
   <div className="layout-app">
@@ -60,6 +61,10 @@ export default function App() {
     {
       path: '/register',
       element: <RegisterPage />,
+    },
+    {
+      path: '/dashboard',
+      element: <DashboardPage />,
     },
   ]);
 

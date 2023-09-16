@@ -7,6 +7,21 @@ import './styles.scss';
 
 export default function DetailPage() {
   const [isImage, setisImage] = useState<boolean>(true);
+  const [counter, setCounter] = useState(1);
+
+  const currentPrice = 15000;
+  const [price, setPrice] = useState(currentPrice);
+
+  const priceFormat = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
+
+  const handleIncrease = () => {
+    setCounter(counter + 1);
+    setPrice(currentPrice + price);
+  };
+  const handleDecrease = () => {
+    setCounter(counter - 1);
+    setPrice(price - currentPrice);
+  };
   return (
     <div>
       <Container className="detail-container">
@@ -42,12 +57,12 @@ export default function DetailPage() {
             </div>
             <hr />
             <div className="up-dow-product">
-              <span>+</span>
-              <span>1</span>
-              <span>-</span>
+              <span onClick={handleIncrease}>+</span>
+              <span>{counter}</span>
+              <span onClick={handleDecrease}>-</span>
             </div>
             <hr />
-            <h2>$55.000</h2>
+            <h2>{priceFormat} $</h2>
             <hr />
             <div className="detail-add">
               <Group position="center">
