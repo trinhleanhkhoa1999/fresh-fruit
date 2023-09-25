@@ -6,14 +6,13 @@ import product1 from '../../assets/img/product1.png';
 import './styles.scss';
 
 export default function DetailPage() {
-  const [isImage, setisImage] = useState<boolean>(true);
+  const [isImage] = useState<boolean>(true);
   const [counter, setCounter] = useState(1);
 
   const currentPrice = 15000;
   const [price, setPrice] = useState(currentPrice);
 
   const priceFormat = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
-
   const handleIncrease = () => {
     setCounter(counter + 1);
     setPrice(currentPrice + price);
@@ -22,6 +21,7 @@ export default function DetailPage() {
     setCounter(counter - 1);
     setPrice(price - currentPrice);
   };
+
   return (
     <div>
       <Container className="detail-container">
@@ -64,7 +64,7 @@ export default function DetailPage() {
             <hr />
             <h2>{priceFormat} $</h2>
             <hr />
-            <div className="detail-add">
+            <div className="detail-add-to-cart">
               <Group position="center">
                 <Button type="button" className="detail-btn">
                   <GiShoppingCart />

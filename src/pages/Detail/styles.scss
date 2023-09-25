@@ -8,50 +8,50 @@
     .detail-des{
 
     }
-    .up-dow-product{
-        // background: yellow;
-        display: flex;
-        width: 40%;
-        padding: 50px;
-        padding-left: 0;
-        span:first-child{
-            flex-grow: 1;
-            text-align: center;
-            border-radius: 50% 0 0 50% ;
-            border: 1px solid #dedede;
-            padding: 15px;
-            cursor: pointer;
-            font-size: larger;
-            font-weight: 700;
-            &:hover{
-                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            }
-        }
-        span:nth-child(2){
-            background: #dedede;
-            flex-grow: 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
+    // .up-dow-product{
+    //     // background: yellow;
+    //     display: flex;
+    //     width: 40%;
+    //     padding: 50px;
+    //     padding-left: 0;
+    //     span:first-child{
+    //         flex-grow: 1;
+    //         text-align: center;
+    //         border-radius: 50% 0 0 50% ;
+    //         border: 1px solid #dedede;
+    //         padding: 15px;
+    //         cursor: pointer;
+    //         font-size: larger;
+    //         font-weight: 700;
+    //         &:hover{
+    //             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    //         }
+    //     }
+    //     span:nth-child(2){
+    //         background: #dedede;
+    //         flex-grow: 3;
+    //         display: flex;
+    //         align-items: center;
+    //         justify-content: center;
+    //         font-weight: 700;
 
 
-        }
-        span:last-child{
-            flex-grow: 1;
-            text-align: center;
-            border-radius: 0 50% 50% 0;
-            border: 1px solid #dedede;
-            padding: 15px;
-            cursor: pointer;
-            font-size: larger;
-            font-weight: 700;
-            &:hover{
-                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            }
-        }
-    }
-    .detail-add{
+    //     }
+    //     span:last-child{
+    //         flex-grow: 1;
+    //         text-align: center;
+    //         border-radius: 0 50% 50% 0;
+    //         border: 1px solid #dedede;
+    //         padding: 15px;
+    //         cursor: pointer;
+    //         font-size: larger;
+    //         font-weight: 700;
+    //         &:hover{
+    //             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    //         }
+    //     }
+    // }
+    .detail-add-to-cart{
         display: flex;
         gap: 15px;
         margin: 30px;

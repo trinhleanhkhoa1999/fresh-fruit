@@ -1,0 +1,18 @@
+.table-body{
+    td{
+        &:nth-child(4){
+            text-align: center;
+        }
+        &:nth-child(5){
+            text-align: center;
+        }
+        
+        &:last-child{
+           button{
+            margin-left: 20px;
+           }
+        }
+    }
+}
+
+

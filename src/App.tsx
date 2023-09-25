@@ -14,6 +14,8 @@ import { RegisterPage } from './pages/Register';
 import Loading from './components/Loading';
 import DetailPage from './pages/Detail';
 import DashboardPage from './pages/Admin/Dashboard';
+import CRUDProduct from './pages/Admin/CRUD/CRUDProduct';
+import CRUDUSer from './pages/Admin/CRUD/CRUDUser';
 
 const Layout = () => (
   <div className="layout-app">
@@ -65,13 +67,25 @@ export default function App() {
     {
       path: '/dashboard',
       element: <DashboardPage />,
+      errorElement: <NotFound />,
+      children: [
+        { index: true, element: <CRUDProduct /> },
+        {
+          path: 'CRUDProduct',
+          element: <CRUDProduct />,
+        },
+        {
+          path: 'CRUDUser',
+          element: <CRUDUSer />,
+        },
+      ],
     },
   ]);
 
   const [loading, setLoading] = useState(false);
   setTimeout(() => {
     setLoading(true);
-  }, 3000);
+  }, 1000);
 
   return (
     <ThemeProvider>{loading ? <RouterProvider router={router} /> : <Loading />} </ThemeProvider>

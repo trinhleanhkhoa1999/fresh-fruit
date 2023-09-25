@@ -1,0 +1,26 @@
+.sidebar-container{
+    ul{
+        padding-left: 0;
+        li{
+            list-style: none;
+            display: flex;
+            justify-content: start;
+            gap: 5px;
+            padding: 20px;
+            // background: red;
+            &:hover{
+                background: #f3f2f1;
+            }
+            .icon{
+                display: flex;
+                align-items: center;
+                color: #0d6efd;
+                font-size: 20px;
+            }
+            span{
+                cursor: pointer;
+            }
+        }
+    }
+    
+}

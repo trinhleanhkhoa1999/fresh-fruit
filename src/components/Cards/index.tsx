@@ -2,26 +2,19 @@ import { Card, Container, Image, SimpleGrid } from '@mantine/core';
 import './styles.scss';
 import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import product1 from '../../assets/img/product1.png';
-import product2 from '../../assets/img/product2.png';
-import product3 from '../../assets/img/product3.png';
-import product4 from '../../assets/img/product4.png';
+import { useEffect } from 'react';
 
-type TCardProduct = {
-  img: string;
-  title: string;
-  price: string;
-  discountPrice: string;
-};
-const CardProduct = ({ img, title, price, discountPrice }: TCardProduct) => {
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { fetchAllProduct } from './action';
+
+const CardProduct = ({ urlImge, name, price, percentDiscount }: TCardProduct) => {
   const navigate = useNavigate();
   const priceFormat = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
-  const discountPriceFormat = discountPrice.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
   return (
     <Card padding="lg" className="card-content">
       <Card.Section>
         <Image
-          src={img}
+          src={urlImge}
           height="auto"
           alt="Banana"
           className="img-card"
@@ -41,16 +34,23 @@ const CardProduct = ({ img, title, price, discountPrice }: TCardProduct) => {
           <AiOutlineHeart />
         </span>
       </div>
-      <div className="title-card">{title}</div>
+      <div className="title-card">{name}</div>
       <div className="card-price">
         <span>{priceFormat}$</span>
-        <span>{discountPriceFormat} $</span>
+        <span>{percentDiscount} %</span>
       </div>
     </Card>
   );
 };
 
 export default function Cards() {
+  const dispatch = useAppDispatch();
+  const { cartProduct } = useAppSelector((state) => state);
+  console.log('cartProduct:', cartProduct);
+  useEffect(() => {
+    dispatch(fetchAllProduct());
+  }, []);
+
   return (
     <Container fluid className="card-container">
       <SimpleGrid
@@ -64,17 +64,9 @@ export default function Cards() {
           },
         ]}
       >
-        {[
-          { img: product1, title: 'Banana', price: '20000', discountPrice: '10000' },
-          { img: product2, title: 'Banana', price: '20000', discountPrice: '10000' },
-          { img: product3, title: 'Banana', price: '20000', discountPrice: '10000' },
-          { img: product4, title: 'Banana', price: '20000', discountPrice: '10000' },
-          { img: product4, title: 'Banana', price: '20000', discountPrice: '10000' },
-          { img: product4, title: 'Banana', price: '20000', discountPrice: '10000' },
-          { img: product4, title: 'Banana', price: '20000', discountPrice: '10000' },
-        ].map((val, idx) => (
-          <CardProduct key={idx} {...val} />
-        ))}
+        {cartProduct.isSuccess &&
+          cartProduct.data.map((val, idx) => <CardProduct key={idx} {...val} />)}
+        {/* <CardProduct img={''} title={''} price={''} discountPrice={''} /> */}
       </SimpleGrid>
     </Container>
   );
