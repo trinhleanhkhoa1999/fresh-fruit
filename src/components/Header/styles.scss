@@ -1,6 +1,11 @@
+
 .header-container {
     background: #f7f7f7;
     color: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
     .header-title{
         height: 100%;
         min-height: 50px;
@@ -65,6 +70,7 @@
 .header-container-2{
     padding: 20px 150px ;
     height: 150px;
+    
     .header-menu{
         list-style-type: none;
         display: flex;

@@ -1,5 +1,15 @@
-import { Button, Center, Container, Grid, Group, Image, Popover, TextInput } from '@mantine/core';
-import { NavLink } from 'react-router-dom';
+import {
+  Button,
+  Center,
+  Container,
+  Grid,
+  Group,
+  Image,
+  Indicator,
+  Popover,
+  TextInput,
+} from '@mantine/core';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   AiFillSetting,
   AiFillFacebook,
@@ -9,12 +19,14 @@ import {
 } from 'react-icons/ai';
 import { GrLanguage } from 'react-icons/gr';
 import { SiZalo } from 'react-icons/si';
+import { FiDelete } from 'react-icons/fi';
 import { GiShoppingCart } from 'react-icons/gi';
 import { MdAccountCircle, MdOutlineAttachMoney } from 'react-icons/md';
 import logo from '../../assets/img/logo.png';
-import product1 from '../../assets/img/product1.png';
 
 import './styles.scss';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { deleteItemInCart } from '../Cards/reducer';
 
 type TPopoverCustomize = {
   icon: any;
@@ -23,7 +35,7 @@ type TPopoverCustomize = {
 };
 
 type TContent = {
-  content: any;
+  content: any[];
 };
 
 const PopoverCustomize = ({ icon, label, content }: TPopoverCustomize) => (
@@ -56,46 +68,62 @@ const PopoverCustomize = ({ icon, label, content }: TPopoverCustomize) => (
   </Popover>
 );
 
-const PopoverCartProduct = ({ content }: TContent) => (
-  <Popover width={300} position="bottom" withArrow shadow="md">
-    <Popover.Target>
-      <div className="header-cart">
-        <GiShoppingCart />
-        <p>Cart</p>
-      </div>
-    </Popover.Target>
-    <Popover.Dropdown>
-      {content.map((val: any, idx: any) => (
-        <div className="cart-content-container" key={idx}>
-          <div className="cart-img">
-            <Image width={50} height={70} fit="contain" src={val.img} mx="auto" />
-          </div>
-          <div className="cart-content">
-            <div className="cart-content-product">
-              <span>{val.title}</span>
-              <span>X</span>
+const PopoverCartProduct = ({ content }: TContent) => {
+  const { cartProduct } = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
+  const handleDeleteCart = (del: any) => {
+    dispatch(deleteItemInCart(del));
+  };
+  const navigate = useNavigate();
+
+  return (
+    <Popover width={300} position="bottom" withArrow shadow="md">
+      <Popover.Target>
+        <div className="header-cart">
+          <Group position="center">
+            <Indicator inline label={cartProduct.value} size={16}>
+              <GiShoppingCart />
+            </Indicator>
+          </Group>
+
+          <p>Cart</p>
+        </div>
+      </Popover.Target>
+      {content.length > 0 && (
+        <Popover.Dropdown>
+          {content.map((val: any, idx: any) => (
+            <div className="cart-content-container" key={idx}>
+              <div className="cart-img">
+                <Image
+                  width={50}
+                  height={70}
+                  fit="contain"
+                  src={val.urlImge}
+                  mx="auto"
+                  onClick={() => {
+                    navigate(`/detail/${val._id} `);
+                  }}
+                />
+              </div>
+              <div className="cart-content">
+                <div className="cart-content-product">
+                  <span>{val.name}</span>
+                  <span>
+                    <FiDelete onClick={() => handleDeleteCart(val)} />
+                  </span>
+                </div>
+                <span>{val.price}</span>
+              </div>
             </div>
-            <span>{val.price}</span>
-          </div>
-        </div>
-      ))}
-      {/* <div className="cart-content-container">
-        <div className="cart-img">
-          <Image width={70} height={70} fit="contain" src={product1} mx="auto" />
-        </div>
-        <div className="cart-content">
-          <div className="cart-content-product">
-            <span>title product</span>
-            <span>X</span>
-          </div>
-          <span>price</span>
-        </div>
-      </div> */}
-    </Popover.Dropdown>
-  </Popover>
-);
+          ))}
+        </Popover.Dropdown>
+      )}
+    </Popover>
+  );
+};
 
 export default function Header() {
+  const { cartProduct } = useAppSelector((state) => state);
   return (
     <>
       {/* header1 */}
@@ -128,14 +156,7 @@ export default function Header() {
           </Grid.Col>
           <Grid.Col lg={1} p={0} sm={2} xs={3}>
             <div className="header-cart">
-              <PopoverCartProduct
-                content={[
-                  { img: product1, title: 'banana', price: '15000' },
-                  { img: product1, title: 'banana', price: '15000' },
-                  { img: product1, title: 'banana', price: '15000' },
-                  { img: product1, title: 'banana', price: '15000' },
-                ]}
-              />
+              <PopoverCartProduct content={cartProduct.cart} />
             </div>
           </Grid.Col>
           <Grid.Col lg={3} p={0} sm={6} xs={9}>

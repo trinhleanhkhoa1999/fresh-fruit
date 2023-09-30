@@ -49,7 +49,7 @@ export default function App() {
           element: <ShopPage />,
         },
         {
-          path: '/detail',
+          path: '/detail/:id',
           element: <DetailPage />,
         },
       ],

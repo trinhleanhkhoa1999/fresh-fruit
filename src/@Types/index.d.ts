@@ -1,4 +1,5 @@
 type TCardProduct = {
+  _id?: string;
   urlImge: string;
   name: string;
   price: number;
