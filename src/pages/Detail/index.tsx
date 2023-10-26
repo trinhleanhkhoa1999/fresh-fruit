@@ -26,7 +26,6 @@ export default function DetailPage() {
 
   const handlers = useRef<NumberInputHandlers | any>();
 
-  // const priceFormat = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
   const { id } = useParams();
 
   useEffect(() => {
