@@ -132,7 +132,7 @@ export default function Header() {
           <Grid.Col lg={3} p={0} sm={12} xs={6}>
             <div className="header-title">Welcome to organic foods & Fruits</div>
           </Grid.Col>
-          <Grid.Col lg="auto" p={0} sm={4} xs={6}>
+          <Grid.Col className="test" lg="auto" p={0} sm={4} xs={6}>
             <Group position="apart">
               {/* setting */}
               <PopoverCustomize
@@ -178,7 +178,7 @@ export default function Header() {
       {/* header2 */}
       <Container fluid className="header-container-2 ">
         <Grid>
-          <Grid.Col lg={2} md={12} xs={12}>
+          <Grid.Col lg={2} md={12}>
             <Image maw={240} mx="auto" radius="md" src={logo} alt="Random image" />
           </Grid.Col>
           <Grid.Col lg={6} md={6} xs={12}>
